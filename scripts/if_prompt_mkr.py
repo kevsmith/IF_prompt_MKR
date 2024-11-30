@@ -275,6 +275,7 @@ class Script(scripts.Script):
                     params["text_models"] = [
                         model["name"] for model in response.json()["models"]
                     ]
+                    print(f"text models: {params["text_models"]}")
                 except Exception as e:
                     print(f"Failed to fetch models from Ollama: {e}")
 
@@ -510,7 +511,7 @@ class Script(scripts.Script):
                         selected_character = gr.Dropdown(
                             label="characters", choices=params["selected_character"]
                         )
-                    with gr.Column(min_width=100):
+                    with gr.Column(min_width=500):
                         select_text_model = gr.Dropdown(
                             label="Text-Model",
                             choices=[],
@@ -787,7 +788,7 @@ class Script(scripts.Script):
             response = requests.post(URI, headers=headers, json=data, verify=False)
         elif api_choice == "ollama":
             port = shared.opts.data.get("ollama_port", "11434")
-            base_url = f"http://{base_ip}:{port}/v1/chat/completions"
+            base_url = f"http://{base_ip}:{port}/api/chat"
             response = requests.post(base_url, headers=headers, json=data)
 
         if response.status_code == 200:
