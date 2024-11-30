@@ -275,7 +275,6 @@ class Script(scripts.Script):
                     params["text_models"] = [
                         model["name"] for model in response.json()["models"]
                     ]
-                    print(f"text models: {params["text_models"]}")
                 except Exception as e:
                     print(f"Failed to fetch models from Ollama: {e}")
 
