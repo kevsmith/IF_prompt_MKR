@@ -517,7 +517,7 @@ class Script(scripts.Script):
                             value=params["selected_text_model"],
                         )
 
-                with gr.Row(min_width=400):
+                with gr.Row():
                     input_prompt = gr.Textbox(
                         lines=1,
                         label="Input Prompt",
@@ -573,7 +573,7 @@ class Script(scripts.Script):
         with gr.Accordion("Prefix & TIembeddings", open=True):
             ti_choices = ["None"]
             ti_choices.extend(get_embeddings())
-            with gr.Row(min_width=400):
+            with gr.Row():
                 prompt_prefix = gr.Textbox(
                     lines=1,
                     default=prompt_prefix_value,
@@ -589,7 +589,7 @@ class Script(scripts.Script):
         with gr.Accordion("Suffix & Loras", open=True):
             lora_choices = ["None"]
             lora_choices.extend(get_loras())
-            with gr.Row(min_width=400):
+            with gr.Row():
                 prompt_subfix = gr.Textbox(
                     lines=1,
                     default=prompt_subfix_value,
